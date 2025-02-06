@@ -8,7 +8,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-conn = sqlite3.connect('treasure.db')
+conn = sqlite3.connect('/tmp/treasure.db')
 c = conn.cursor()
 
 c.execute('''CREATE TABLE IF NOT EXISTS teams
