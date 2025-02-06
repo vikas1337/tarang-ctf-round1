@@ -1,3 +1,4 @@
+requests
 fastapi
 jinja2
 python-multipart
