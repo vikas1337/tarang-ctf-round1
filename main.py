@@ -90,7 +90,7 @@ async def color_page(request: Request):
 
 @app.post("/route")
 async def create_team(leader: str = Form(...), color: str = Form(...)):
-    conn = sqlite3.connect('treasure.db')
+    conn = sqlite3.connect('/tmp/treasure.db')
     c = conn.cursor()
     c.execute("INSERT INTO teams (leader, color) VALUES (?, ?)", (leader, color))
     conn.commit()
@@ -99,7 +99,7 @@ async def create_team(leader: str = Form(...), color: str = Form(...)):
 
 @app.get("/route", response_class=HTMLResponse)
 async def route_page(request: Request, leader: str, color: str):
-    conn = sqlite3.connect('treasure.db')
+    conn = sqlite3.connect('/tmp/treasure.db')
     c = conn.cursor()
     c.execute("SELECT current_step FROM teams WHERE leader=? AND color=?", (leader, color))
     step = c.fetchone()[0]
@@ -113,7 +113,7 @@ async def route_page(request: Request, leader: str, color: str):
 
 @app.post("/validate")
 async def validate_flag(leader: str = Form(...), color: str = Form(...), flag: str = Form(...)):
-    conn = sqlite3.connect('treasure.db')
+    conn = sqlite3.connect('/tmp/treasure.db')
     c = conn.cursor()
     
     c.execute("SELECT current_step FROM teams WHERE leader=? AND color=?", (leader, color))
