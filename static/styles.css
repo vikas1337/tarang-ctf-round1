@@ -15,7 +15,7 @@
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   min-height: 100vh;
   background: linear-gradient(-45deg, #1a1a1a, #2d2d2d, #1f1f1f, #2a2a2a);
   background-size: 400% 400%;
@@ -24,24 +24,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .logo {
-    position: fixed;
-    top: 20px;
-    height: auto;
-    z-index: 100;
-  }
+  max-width: 100%;
+  height: auto;
+}
   
   .logo-left {
-    left: 20px;
-    width: 225px;
-  }
-  
-  .logo-right {
-    right: 20px;
+    left: 80px;
     width: 300px;
   }
+  
 
 .container {
   background: rgba(42, 42, 42, 0.95);
@@ -55,6 +51,8 @@ body {
   margin: 20px;
   transform: translateY(0);
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .container:hover {
@@ -328,4 +326,76 @@ input[type="text"]::placeholder {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    position: relative;
+    width: 150px;
+    top: 0;
+    margin: 1rem auto;
+    display: block;
+    left: auto;
+    right: auto;
+  }
+
+  .logo-left, .logo-right {
+    position: static;
+    margin: 1rem auto;
+  }
+
+  .container {
+    margin: 1rem;
+    padding: 1.5rem;
+    width: 85%;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .color-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  #flagForm button[type="submit"] {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  input[type="text"] {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 120px;
+  }
+
+  .container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .color-grid button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  #clueBox {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .image-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
 }
