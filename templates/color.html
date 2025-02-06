@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Color</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <img src="static/rvu.png" alt="Left Logo" class="logo logo-left">
+    <img src="static/taranggay.png" alt="Right Logo" class="logo logo-right">
+    
+    <div class="container fade-in">
+        <h1>Select Your Team Color</h1>
+        <form action="/route" method="post">
+            <input type="hidden" name="leader" value="{{ request.query_params.leader }}">
+            <div class="color-grid">
+                <button type="submit" name="color" value="Red" class="red">Red</button>
+                <button type="submit" name="color" value="Green" class="green">Green</button>
+                <button type="submit" name="color" value="Purple" class="purple">Purple</button>
+                <button type="submit" name="color" value="Yellow" class="yellow">Yellow</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ color }} Route</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <img src="/static/rvu.png" alt="Left Logo" class="logo logo-left">
+    <img src="/static/taranggay.png" alt="Right Logo" class="logo logo-right">
+    
+    <div class="container fade-in">
+        <h1>{{ color }} Route </h1>
+        <p><center> Team Leader: <b>{{ leader }}</b> </center></p>
+        
+        <form id="flagForm" onsubmit="submitFlag(event)">
+            <input type="hidden" id="leader" value="{{ leader }}">
+            <input type="hidden" id="color" value="{{ color }}">
+            
+            <input type="text" id="flagInput" placeholder="Enter flag" required>
+            <button type="submit">Validate Flag</button>
+        </form>
+
+        <div id="clueBox"></div>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <script>
+        async function submitFlag(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('leader', document.getElementById('leader').value);
+            formData.append('color', document.getElementById('color').value);
+            formData.append('flag', document.getElementById('flagInput').value);
+
+            try {
+                const response = await fetch('/validate', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                });
+                
+                const result = await response.json();
+                const clueBox = document.getElementById('clueBox');
+                const errorMessage = document.getElementById('errorMessage');
+                
+                if (result.success) {
+            errorMessage.classList.remove('visible');
+            
+            let clueContent = `
+                <h3>Step ${result.step} Clue:</h3>
+                <p>${result.clue}</p>
+            `;
+
+            if (result.image) {
+                const images = result.image.split(',');
+                clueContent += `<div class="image-links">`;
+                images.forEach((img, index) => {
+                    clueContent += `
+                        <a href="/static/${img.trim()}" target="_blank" class="image-link">
+                            Clue Image ${index + 1} ↗
+                        </a>
+                    `;
+                });
+                clueContent += `</div>`;
+            }
+
+
+                    if (result.step === 8) {
+                        clueContent += `
+                            <div class="final-message">
+                                <p>🔑 Congratulations! You Have Passed Round 1! </p>
+                            </div>
+                        `;
+                    }
+
+                    clueBox.innerHTML = clueContent;
+                    clueBox.classList.add('visible');
+                    document.getElementById('flagInput').value = '';
+                } else {
+                    clueBox.classList.remove('visible');
+                    errorMessage.textContent = 'Invalid flag! Try again.';
+                    errorMessage.classList.add('visible');
+                    setTimeout(() => {
+                        errorMessage.classList.remove('visible');
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
