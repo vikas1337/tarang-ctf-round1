@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 import sqlite3
 
 def send_discord_webhook(leader: str, color: str, flag: str, is_success: bool):
-    webhook_url = "https://discord.com/api/webhooks/1337127662384054425/jbRxJWeBTKSp11RtdObiOLP_PjPR2OpAjCk9UBIUPw6gaXxR3s6PfBgcMyyM_xMkDqug"
+    webhook_url = ""
     if not webhook_url:
         return
     
