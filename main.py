@@ -125,7 +125,11 @@ async def route_page(request: Request, leader: str, color: str):
     conn = sqlite3.connect('/tmp/treasure.db')
     c = conn.cursor()
     c.execute("SELECT current_step FROM teams WHERE leader=? AND color=?", (leader, color))
-    step = c.fetchone()[0]
+    row = c.fetchone()
+    if row is None:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Team not found")
+    step = row[0]
     conn.close()
     return templates.TemplateResponse("route.html", {
         "request": request,
@@ -140,7 +144,11 @@ async def validate_flag(leader: str = Form(...), color: str = Form(...), flag: s
     c = conn.cursor()
     
     c.execute("SELECT current_step FROM teams WHERE leader=? AND color=?", (leader, color))
-    current_step = c.fetchone()[0]
+    row = c.fetchone()
+    if row is None:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Team not found")
+    current_step = row[0]
     
     c.execute("SELECT clue, image FROM routes WHERE color=? AND step=? AND expected_flag=?", 
              (color, current_step, flag))
@@ -157,6 +165,6 @@ async def validate_flag(leader: str = Form(...), color: str = Form(...), flag: s
         return {"success": True, "clue": result[0], "image": result[1], "step": new_step}
     
     conn.close()
-
     send_discord_webhook(leader, color, flag, False)
     return {"success": False, "error": "Invalid flag!"}
+
