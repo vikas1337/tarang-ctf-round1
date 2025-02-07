@@ -57,7 +57,7 @@ routes = {
         (5, 'ilikekatwilliams', 'place for cnade actrpteic', 'images/default.jpg'),                # A Block
         (6, 'uaresoclose', 'Where is this I wonder', 'images/red/step6.jpg'),                                  # BioTech
         (7, 'goodbyemyfriendbacktothelobby', 'We end where we begin.', 'images/default.jpg'),      # Mini Mingos
-        (8, '1RUA23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')               # Final C Block
+        (8, '1RVU23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')               # Final C Block
     ],
     'Green': [  # Order: 1-2-7-4-6-3-5-8
         (1, 'welcometotarangctf', 'https://maps.app.goo.gl/UvFQXfnksFB75C5SA', 'images/default.jpg'),  # C Block
@@ -67,7 +67,7 @@ routes = {
         (5, 'pleasetellmeustillluvme', "Let's see what's new here", 'images/green/step5.jpg'),             # Library
         (6, 'ratsarestinky', 'First floor is off limits', 'images/default.jpg'),                           # MM Foods
         (7, 'doulovedoingtasks', 'The first conjoined twin of RVU', 'images/default.jpg'),             # Big Mingos
-        (8, '1RUA23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')                   # Final C Block
+        (8, '1RVU23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')                   # Final C Block
     ],
     'Purple': [  # Order: 1-4-2-7-3-6-5-8
         (1, 'welcometotarangctf', 'Purana Blood Donation Camp', 'images/default.jpg'),               # C Block
@@ -77,7 +77,7 @@ routes = {
         (5, 'ratsarestinky', 'Google this', 'images/purple/step5.jpg'),                                    # MM Foods
         (6, 'pleasetellmeustillluvme', 'Do you know where this is?', 'images/purple/step6.jpg'),                         # Library
         (7, 'doulovedoingtasks', '<– 2 square 1', 'images/default.jpg'),                              # Big Mingos
-        (8, '1RUA23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')                  # Final C Block
+        (8, '1RVU23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')                  # Final C Block
     ],
     'Yellow': [  # Order: 1-6-2-4-5-3-7-8
         (1, 'welcometotarangctf', 'The only building with walls of this color(forgive me but it gets easier)', 'images/yellow/step1.jpg'),        # C Block
@@ -87,7 +87,7 @@ routes = {
         (5, 'doulovedoingtasks', 'He did something in 2004', 'images/yellow/step5.jpg'),                    # Big Mingos
         (6, 'ratsarestinky', 'it’s just a', 'images/yellow/step6.jpg'),                                       # MM Foods
         (7, 'ilikekatwilliams', 'Baseball is nice', 'images/yellow/step7.jpg'),                                     # A Block
-        (8, '1RUA23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')                   # Final C Block
+        (8, '1RVU23CSE182', 'Yay! You have made it to Round 2!', 'images/congrats.jpg')                   # Final C Block
     ]
 }
 
